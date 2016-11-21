@@ -13,11 +13,13 @@ import {
 } from 'react-native';
 
 var BottomNav = require("./js/commons/BottomNav.js");
+var Login = require("./js/commons/accessIn/Login.js");
 
 export default class doutianReact extends Component {
   render() {
     return (
       <View style={styles.container}>
+        <Login />
         <BottomNav />
       </View>
     );
