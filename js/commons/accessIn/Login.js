@@ -92,10 +92,8 @@ const styles = StyleSheet.create({
 		position: "absolute",
 		width: 40,
 		height: 40,
-		borderRadius: 40,
 		top: 10,
 		right: 10,
-		backgroundColor: "rgba(240, 240, 240, 1)",
 		borderWidth: 0
 	},
 	closeText: {

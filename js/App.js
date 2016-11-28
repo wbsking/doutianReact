@@ -7,7 +7,7 @@ import {
 } from 'react-native';
 
 var BottomNav = require("./commons/BottomNav.js");
-var HomePage = require("./commons/pages/HomePage.js");
+var HomePage = require("./containers/HomePage.js");
 
 export default class doutianReact extends Component {
   render() {
