@@ -3,9 +3,7 @@
 const React = require('react');
 const ReactNative = require('react-native');
 import Button from 'apsl-react-native-button';
-const {
-	Component
-} = React;
+import {PropTypes, Component} from 'react'
 
 const {
   View,
@@ -18,42 +16,25 @@ const {
 
 
 class Login extends Component {
-	constructor(props) {
-	  super(props);
-	  this.state = {visible: true};
-	}
-
-	setModalVisible(visible) {
-		this.setState({visible: visible})
-	}
-
 	doLogin = function(){
-	}
-
-	doRegister = function(){
 
 	}
-
-	doClose = function(){
-		this.setModalVisible(false);
-	}
-
-	modalClose = function(){}
 
 	render() {
+		const {visible, modalClose, showRegister} = this.props
 		return (
 				<Modal
 					animationType="slide"
 					transparent={false}
-					visible={this.state.visible}
-					onRequestClose={this.modalClose.bind(this)}
+					visible={visible}
+					onRequestClose={modalClose}
 					>
 					<View style={styles.login}>
 						<Text style={styles.title}>恰似故人来</Text>
 						<TextInput placeholder="请输入邮箱" />
 						<TextInput placeholder="请输入密码" secureTextEntry={true} />
 						<Button style={styles.loginBtn} onPress={this.doLogin.bind(this)}>登录</Button>
-						<TouchableWithoutFeedback onPress={this.doRegister.bind(this)}>
+						<TouchableWithoutFeedback onPress={showRegister}>
 						<View>
 							<Text style={styles.register}>没有帐号，注册一个</Text>
 						</View>
@@ -62,7 +43,7 @@ class Login extends Component {
 					<Button
 						style={styles.closeBtn}
 						textStyle={styles.closeText}
-						onPress={this.doClose.bind(this)}>X</Button>
+						onPress={modalClose}>X</Button>
 				</Modal>
 		);
 	}
@@ -102,4 +83,10 @@ const styles = StyleSheet.create({
 	}
 });
 
-module.exports = Login;
+Login.propTypes = {
+  visible: PropTypes.bool.isRequired,
+  modalClose: PropTypes.func.isRequired,
+  showRegister: PropTypes.func.isRequired
+}
+
+export default Login

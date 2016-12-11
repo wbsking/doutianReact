@@ -1,4 +1,7 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
+import {createStore} from 'redux'
+import { Provider } from 'react-redux'
+
 import {
   AppRegistry,
   StyleSheet,
@@ -6,25 +9,20 @@ import {
   View
 } from 'react-native';
 
-var BottomNav = require("./commons/BottomNav.js");
-var HomePage = require("./containers/HomePage.js");
+import AppReducer from "./reducers/app"
+import Root from './containers/Root'
+
+let store = createStore(AppReducer)
+
 
 export default class doutianReact extends Component {
   render() {
     return (
-      <View style={styles.container}>
-        <HomePage />
-        <BottomNav />
-      </View>
+      <Provider store={store}>
+        <Root />
+      </Provider>
     );
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#F5FCFF',
-  }
-});
 
 AppRegistry.registerComponent('doutianReact', () => doutianReact);

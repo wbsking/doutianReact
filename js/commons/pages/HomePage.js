@@ -1,35 +1,21 @@
-'use strict';
-
-import React, {Component} from 'react';
-import {Text, View, StyleSheet, TouchableWithoutFeedback} from 'react-native';
-import Dimensions from 'Dimensions';
-import Button from 'apsl-react-native-button';
-
-var Login = require("../accessIn/Login.js");
+import React, {PropTypes, Component} from 'react'
+import {Text, View, StyleSheet, TouchableWithoutFeedback} from 'react-native'
+import Dimensions from 'Dimensions'
+import Button from 'apsl-react-native-button'
 
 var width = Dimensions.get('window').width;
 var height = Dimensions.get("window").height;
 
 class HomePage extends Component {
-	constructor(props) {
-	  super(props);
-
-	  this.state = {};
-	}
-
-	doLogin = function(){
-
-	}
-
 	render() {
+		const {needLogin} = this.props
 		return (
 			<View style={styles.home}>
 				<Button style={styles.loginBtn}
 					textStyle={styles.btnText}
-					onPress={this.doLogin.bind(this)}>
+					onPress={needLogin}>
 						豆田未发现你的足迹，请登录
 				</Button>
-				<Login />
 			</View>
 		);
 	}
@@ -49,4 +35,8 @@ const styles = StyleSheet.create({
 	}
 })
 
-module.exports = HomePage;
+HomePage.propTypes = {
+	needLogin: PropTypes.func.isRequired
+}
+
+export default HomePage
